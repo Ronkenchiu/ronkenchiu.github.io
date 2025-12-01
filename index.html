@@ -76,7 +76,7 @@
         
         const COZE_CONFIG = {
             // 🚨 更新后的 API Token
-            token: 'cztei_qY9D9y47MIlOyDuWReBJr2e3fiaJV5hWqns081mLg4diccESrwmK0jz5dHRNIbkB7',
+            token: 'cztei_qHJ3AAydJeWsaPf7bbp9D93aAXfkidlFBKqTeCicRfHcu7OiKFEuYM13G6pDgc5b8',
             bot_id: '7578219795532251145', 
             baseURL: 'https://api.coze.cn'
         };
@@ -114,7 +114,7 @@
             try {
                 els.statusText.innerText = "Connecting to AE...";
                 
-                // 构造请求体，严格对齐 SDK 示例结构
+                // 构造请求体，精简对齐 curl 示例结构
                 const requestBody = {
                     bot_id: COZE_CONFIG.bot_id,
                     user_id: 'web_user_' + Date.now(),
@@ -125,13 +125,11 @@
                             "content": text,
                             "content_type": "text",
                             "role": "user",
-                            "type": "question",
-                            "meta_data": {} // 保持空对象
+                            "type": "question"
                         }
                     ],
-                    custom_variables: {}, // 保持空对象
-                    meta_data: {},        // 保持空对象
-                    extra_params: {},     // 保持空对象
+                    // 保留 parameters 字段
+                    parameters: {}
                 };
 
                 const response = await fetch(COZE_CONFIG.baseURL + '/v3/chat', {
